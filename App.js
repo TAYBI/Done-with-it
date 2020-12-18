@@ -1,23 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import {
+  Image,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+} from "react-native";
 
 export default function App() {
   let x = 22;
   return (
-    <View style={styles.container}>
-      <Text>work</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Image source={require("./assets/favicon.png")} />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#333',
-    color: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    color: "white",
+    backgroundColor: "#1bb7cc",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+  text: {
+    color: "white",
   },
 });
