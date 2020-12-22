@@ -10,7 +10,7 @@ export default function LoginScreen() {
     <ImageBackground blurRadius={3} source={bg} style={styles.image}>
       <View style={styles.header}>
         <Image source={logo} style={styles.logo} />
-        <Text style={styles.text}>sell items you don't nees anymore</Text>
+        <Text style={styles.text}>sell what you don't anymore</Text>
       </View>
       <View style={styles.btnContainer}>
         <LoginButton text="Login" />
