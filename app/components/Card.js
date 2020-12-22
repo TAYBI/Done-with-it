@@ -5,21 +5,13 @@ import colors from "../config/colors";
 
 function Card({ title, subTitle, image }) {
   return (
-    <View
-      style={{
-        padding: 20,
-        paddingTop: 80,
-        backgroundColor: "#f8f4f4",
-      }}
-    >
-      <View style={styles.container}>
-        <Image source={image} style={styles.image} />
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.subTitle} t>
-            {subTitle}
-          </Text>
-        </View>
+    <View style={styles.container}>
+      <Image source={image} style={styles.image} />
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.subTitle} t>
+          {subTitle}
+        </Text>
       </View>
     </View>
   );
@@ -28,6 +20,8 @@ function Card({ title, subTitle, image }) {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 200,
+    margin: 15,
+    marginBottom: 5,
   },
   image: {
     width: "100%",
