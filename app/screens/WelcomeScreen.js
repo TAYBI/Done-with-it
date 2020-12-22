@@ -41,10 +41,11 @@ const styles = StyleSheet.create({
     padding: 30,
     paddingTop: 15,
     textAlign: "center",
+    textTransform: "capitalize",
   },
   btnContainer: {
     width: "90%",
-    height: 140,
+    height: 130,
     justifyContent: "space-between",
     bottom: 30,
   },
