@@ -1,26 +1,21 @@
 import React from "react";
 import bg from "../assets/background.jpg";
 import logo from "../assets/logo-red.png";
-import {
-  Image,
-  ImageBackground,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 
-import colors from "../config/colors";
+import LoginButton from "../components/LoginButton";
 
 export default function LoginScreen() {
   return (
-    <ImageBackground source={bg} style={styles.image}>
+    <ImageBackground blurRadius={3} source={bg} style={styles.image}>
       <View style={styles.header}>
         <Image source={logo} style={styles.logo} />
-        <Text>sell items you don't nees anymore</Text>
+        <Text style={styles.text}>sell items you don't nees anymore</Text>
       </View>
-      <View style={styles.btnRed}></View>
-      <View style={styles.btnGreen}></View>
+      <View style={styles.btnContainer}>
+        <LoginButton text="Login" />
+        <LoginButton text="Register" color="secondary" />
+      </View>
     </ImageBackground>
   );
 }
@@ -40,14 +35,17 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 70,
   },
-  btnGreen: {
-    width: "100%",
-    height: 70,
-    backgroundColor: colors.primary,
+  text: {
+    fontSize: 20,
+    fontWeight: "bold",
+    padding: 30,
+    paddingTop: 15,
+    textAlign: "center",
   },
-  btnRed: {
-    width: "100%",
-    height: 70,
-    backgroundColor: colors.secondary,
+  btnContainer: {
+    width: "90%",
+    height: 140,
+    justifyContent: "space-between",
+    bottom: 30,
   },
 });
