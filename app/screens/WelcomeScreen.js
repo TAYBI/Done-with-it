@@ -6,15 +6,16 @@ import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import LoginButton from "../components/LoginButton";
 
 export default function LoginScreen() {
+  let onPress = () => console.log("pressed");
   return (
-    <ImageBackground blurRadius={3} source={bg} style={styles.image}>
+    <ImageBackground blurRadius={7} source={bg} style={styles.image}>
       <View style={styles.header}>
         <Image source={logo} style={styles.logo} />
         <Text style={styles.text}>sell what you don't anymore</Text>
       </View>
       <View style={styles.btnContainer}>
-        <LoginButton text="Login" />
-        <LoginButton text="Register" color="secondary" />
+        <LoginButton text="Login" color="primary" onPress={onPress} />
+        <LoginButton text="Register" color="secondary" onPress={onPress} />
       </View>
     </ImageBackground>
   );

@@ -1,13 +1,15 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 
 function LoginButton(props) {
-  let color = props.color == "secondary" ? colors.secondary : colors.primary;
   return (
-    <View style={[styles.button, { backgroundColor: color }]}>
+    <TouchableOpacity
+      onPress={props.onPress}
+      style={[styles.button, { backgroundColor: colors[props.color] }]}
+    >
       <Text style={styles.text}>{props.text}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
