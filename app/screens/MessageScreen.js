@@ -1,7 +1,8 @@
 import React from "react";
-import { FlatList, Platform, StatusBar, StyleSheet } from "react-native";
+import { FlatList, Platform, StatusBar, StyleSheet, View } from "react-native";
 
 import ListItem from "../components/ListItem";
+import ListItemDeleteButton from "../components/ListItemDeleteButton";
 import ListItemSeperator from "../components/ListItemSeperator";
 import Screen from "../components/Screen";
 
@@ -18,6 +19,18 @@ const messages = [
     description: "d2",
     image: require("../assets/mosh.jpg"),
   },
+  {
+    id: 3,
+    tittle: "t3",
+    description: "d3",
+    image: require("../assets/mosh.jpg"),
+  },
+  {
+    id: 4,
+    tittle: "t4",
+    description: "d4",
+    image: require("../assets/mosh.jpg"),
+  },
 ];
 
 function MessageScreen(props) {
@@ -31,6 +44,8 @@ function MessageScreen(props) {
             title={item.tittle}
             subTitle={item.description}
             image={item.image}
+            onPress={() => console.log("selected: ", item)}
+            renderRightActions={() => <ListItemDeleteButton />}
           />
         )}
         ItemSeparatorComponent={() => <ListItemSeperator />}
