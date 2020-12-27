@@ -9,7 +9,8 @@ import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 
 import image from "./app/assets/jacket.jpg";
 import image2 from "./app/assets/couch.jpg";
+import MessageScreen from "./app/screens/MessageScreen";
 
 export default function App() {
-  return <ListingDetailsScreen />;
+  return <MessageScreen />;
 }
