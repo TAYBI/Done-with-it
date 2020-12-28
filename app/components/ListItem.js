@@ -50,13 +50,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    fontSize: 16,
+    fontSize: 17,
     textTransform: "capitalize",
+    fontWeight: "600",
   },
   subTitle: {
     fontSize: 16,
     textTransform: "capitalize",
     color: colors.medium,
+    // width: "93%",
   },
 });
 
