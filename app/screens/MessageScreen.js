@@ -35,8 +35,12 @@ const initMessages = [
 
 function MessageScreen() {
   const [messages, setMessages] = useState(initMessages);
+  const [refreshing, useRefreshing] = useState(false);
+
   const handleDelete = (item) => {
+    //---
     // delete message from message
+
     // const newMessages = messages.filter((msg) => msg.id !== item.id);
     // setMessages(newMessages);
     setMessages(messages.filter((msg) => msg.id !== item.id));
@@ -59,6 +63,41 @@ function MessageScreen() {
           />
         )}
         ItemSeparatorComponent={ListItemSeperator}
+        refreshing={refreshing}
+        onRefresh={() => {
+          setMessages([
+            {
+              id: 2,
+              tittle: "t2",
+              description: "d2",
+              image: require("../assets/mosh.jpg"),
+            },
+            {
+              id: 3,
+              tittle: "t3",
+              description: "d3",
+              image: require("../assets/mosh.jpg"),
+            },
+            {
+              id: 4,
+              tittle: "t4",
+              description: "d4",
+              image: require("../assets/mosh.jpg"),
+            },
+            {
+              id: 5,
+              tittle: "t5",
+              description: "d5",
+              image: require("../assets/mosh.jpg"),
+            },
+            {
+              id: 6,
+              tittle: "t6",
+              description: "d6",
+              image: require("../assets/mosh.jpg"),
+            },
+          ]);
+        }}
       />
     </Screen>
   );
