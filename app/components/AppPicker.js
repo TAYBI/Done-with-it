@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   Button,
+  FlatList,
   Modal,
   StyleSheet,
   Text,
@@ -12,8 +13,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 import defaultStyles from "../config/styles";
 import Screen from "./Screen";
+import PickerItem from "./PickerItem";
 
-function AppPicker({ icon, placeholder }) {
+function AppPicker({ icon, items, placeholder, setCategory }) {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -39,6 +41,19 @@ function AppPicker({ icon, placeholder }) {
       <Modal visible={visible} animationType="slide">
         <Screen>
           <Button title="Close" onPress={() => setVisible(false)} />
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.type}
+            renderItem={({ item }) => (
+              <PickerItem
+                text={item.label}
+                onPress={() => {
+                  setVisible(false);
+                  setCategory(item.label);
+                }}
+              />
+            )}
+          />
         </Screen>
       </Modal>
     </>
