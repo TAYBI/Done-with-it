@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
+import defaultStyles from "../config/styles";
 
 function AppTextInput({ icon, ...otherProps }) {
   return (
@@ -16,7 +17,7 @@ function AppTextInput({ icon, ...otherProps }) {
       )}
       <TextInput
         clearButtonMode="always"
-        style={styles.input}
+        style={defaultStyles.text}
         {...otherProps}
       />
     </View>
@@ -30,10 +31,6 @@ const styles = StyleSheet.create({
     borderRadius: 35,
     flexDirection: "row",
     padding: 15,
-  },
-  input: {
-    fontSize: 18,
-    color: colors.dark,
   },
   icon: {
     marginRight: 5,
