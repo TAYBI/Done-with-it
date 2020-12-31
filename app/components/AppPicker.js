@@ -1,9 +1,10 @@
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
+import defaultStyles from "../config/styles";
 
-function AppTextInput({ icon, ...otherProps }) {
+function AppPicker({ icon, placeholder }) {
   return (
     <View style={styles.container}>
       {icon && (
@@ -14,10 +15,11 @@ function AppTextInput({ icon, ...otherProps }) {
           color={colors.medium}
         />
       )}
-      <TextInput
-        clearButtonMode="always"
-        style={styles.input}
-        {...otherProps}
+      <Text style={[defaultStyles.text, { flex: 1 }]}>{placeholder}</Text>
+      <MaterialCommunityIcons
+        name="chevron-down"
+        size={27}
+        color={colors.medium}
       />
     </View>
   );
@@ -36,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppTextInput;
+export default AppPicker;
