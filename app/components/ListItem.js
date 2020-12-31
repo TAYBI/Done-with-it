@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textTransform: "capitalize",
     color: colors.medium,
-    // width: "93%",
   },
 });
 

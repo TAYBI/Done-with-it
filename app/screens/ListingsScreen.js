@@ -1,6 +1,7 @@
 import React from "react";
 import { FlatList, View } from "react-native";
 import Card from "../components/Card";
+import colors from "../config/colors";
 
 const items = [
   {
@@ -19,7 +20,7 @@ const items = [
 
 function ListingsScreen() {
   return (
-    <View style={{ padding: 5 }}>
+    <View style={{ padding: 2, backgroundColor: colors.light, flex: 1 }}>
       <FlatList
         data={items}
         keyExtractor={(item) => item.id.toString()}

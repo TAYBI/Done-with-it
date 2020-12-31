@@ -1,6 +1,5 @@
 import React from "react";
 import { Image, Text, View, StyleSheet } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 import colors from "../config/colors";
 
 function Card({ title, subTitle, image }) {
