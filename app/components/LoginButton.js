@@ -2,20 +2,19 @@ import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 
-function LoginButton(props) {
+function LoginButton({ style, onPress, text, color }) {
   return (
     <TouchableOpacity
-      onPress={props.onPress}
-      style={[styles.button, { backgroundColor: colors[props.color] }]}
+      onPress={onPress}
+      style={[styles.button, style, { backgroundColor: colors[color] }]}
     >
-      <Text style={styles.text}>{props.text}</Text>
+      <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    // flex: 1,
     width: "100%",
     height: 55,
     alignItems: "center",
