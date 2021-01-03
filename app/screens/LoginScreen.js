@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, StyleSheet } from "react-native";
 
 import AppTextInput from "../components/AppTextInput";
@@ -6,6 +6,9 @@ import LoginButton from "../components/LoginButton";
 import Screen from "../components/Screen";
 
 function LoginScreen() {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
   return (
     <Screen style={styles.container}>
       <Image style={styles.image} source={require("../assets/logo-red.png")} />
@@ -14,6 +17,7 @@ function LoginScreen() {
         autoCorrect={false}
         icon="email"
         keyboardType="email-address"
+        onChangeText={(text) => setEmail(text)}
         placeholder="Email"
       />
 
@@ -21,10 +25,16 @@ function LoginScreen() {
         autoCorrect={false}
         autoCapitalize="none"
         icon="lock"
-        placeholder="Name"
+        onChangeText={(text) => setPassword(text)}
+        placeholder="Password"
         secureTextEntry
       />
-      <LoginButton style={{ marginTop: 10 }} text="login" color="primary" />
+      <LoginButton
+        onPress={() => console.log(email, password)}
+        style={{ marginTop: 10 }}
+        text="login"
+        color="primary"
+      />
     </Screen>
   );
 }
