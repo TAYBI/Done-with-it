@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Image, StyleSheet } from "react-native";
+import { Formik } from "formik";
 
 import AppTextInput from "../components/AppTextInput";
 import LoginButton from "../components/LoginButton";
@@ -12,29 +13,39 @@ function LoginScreen() {
   return (
     <Screen style={styles.container}>
       <Image style={styles.image} source={require("../assets/logo-red.png")} />
-      <AppTextInput
-        autoCapitalize="none"
-        autoCorrect={false}
-        icon="email"
-        keyboardType="email-address"
-        onChangeText={(text) => setEmail(text)}
-        placeholder="Email"
-      />
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        onSubmit={(values) => console.log(values.email, values.password)}
+      >
+        {({ handleChange, handleSubmit }) => (
+          <>
+            <AppTextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              icon="email"
+              keyboardType="email-address"
+              onChangeText={handleChange("email")}
+              placeholder="Email"
+            />
 
-      <AppTextInput
-        autoCorrect={false}
-        autoCapitalize="none"
-        icon="lock"
-        onChangeText={(text) => setPassword(text)}
-        placeholder="Password"
-        secureTextEntry
-      />
-      <LoginButton
-        onPress={() => console.log(email, password)}
-        style={{ marginTop: 10 }}
-        text="login"
-        color="primary"
-      />
+            <AppTextInput
+              autoCorrect={false}
+              autoCapitalize="none"
+              icon="lock"
+              onChangeText={handleChange("password")}
+              placeholder="Password"
+              secureTextEntry
+            />
+
+            <LoginButton
+              onPress={handleSubmit}
+              style={{ marginTop: 10 }}
+              text="login"
+              color="primary"
+            />
+          </>
+        )}
+      </Formik>
     </Screen>
   );
 }
