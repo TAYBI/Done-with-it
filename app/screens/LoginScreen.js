@@ -1,23 +1,29 @@
-import React, { useState } from "react";
-import { Image, StyleSheet } from "react-native";
+import React from "react";
+import { Image, StyleSheet, Text } from "react-native";
 import { Formik } from "formik";
 
 import AppTextInput from "../components/AppTextInput";
 import LoginButton from "../components/LoginButton";
 import Screen from "../components/Screen";
+import defaultStyles from "../config/styles";
+
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string().required().email().label("Email"),
+  password: Yup.string().required().min(4).label("Password"),
+});
 
 function LoginScreen() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-
   return (
     <Screen style={styles.container}>
       <Image style={styles.image} source={require("../assets/logo-red.png")} />
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => console.log(values.email, values.password)}
+        validationSchema={validationSchema}
       >
-        {({ handleChange, handleSubmit }) => (
+        {({ handleChange, handleSubmit, errors }) => (
           <>
             <AppTextInput
               autoCapitalize="none"
@@ -28,6 +34,12 @@ function LoginScreen() {
               placeholder="Email"
             />
 
+            {errors.email && (
+              <Text style={[defaultStyles.text, { color: "red" }]}>
+                {errors.email}
+              </Text>
+            )}
+
             <AppTextInput
               autoCorrect={false}
               autoCapitalize="none"
@@ -36,6 +48,12 @@ function LoginScreen() {
               placeholder="Password"
               secureTextEntry
             />
+
+            {errors.password && (
+              <Text style={[defaultStyles.text, styles.text]}>
+                {errors.password}
+              </Text>
+            )}
 
             <LoginButton
               onPress={handleSubmit}
@@ -60,6 +78,9 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     marginTop: 40,
     alignSelf: "center",
+  },
+  text: {
+    color: "red",
   },
 });
 
