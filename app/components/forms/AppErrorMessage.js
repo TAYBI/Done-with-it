@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 
-import defaultStyles from "../config/styles";
+import defaultStyles from "../../config/styles";
 
 function AppErrorMessage({ error, visible }) {
   if (!visible || !error) return null;
