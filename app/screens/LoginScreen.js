@@ -1,15 +1,11 @@
 import React from "react";
 import { Image, StyleSheet, Text } from "react-native";
 import { Formik } from "formik";
-
-import AppTextInput from "../components/AppTextInput";
-import LoginButton from "../components/LoginButton";
-import Screen from "../components/Screen";
-import defaultStyles from "../config/styles";
-
 import * as Yup from "yup";
-import AppErrorMessage from "../components/AppErrorMessage";
+
+import Screen from "../components/Screen";
 import AppFormField from "../components/AppFormField";
+import SubmitButton from "../components/SubmitButton";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -25,7 +21,7 @@ function LoginScreen() {
         onSubmit={(values) => console.log(values.email, values.password)}
         validationSchema={validationSchema}
       >
-        {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
+        {() => (
           <>
             <AppFormField
               autoCapitalize="none"
@@ -33,40 +29,19 @@ function LoginScreen() {
               icon="email"
               name="email"
               keyboardType="email-address"
-              // onChangeText={handleChange("email")}
-              // onBlur={() => setFieldTouched("email")}
               placeholder="Email"
             />
-
-            {/* <AppErrorMessage visible={touched.email} error={errors.email} /> */}
 
             <AppFormField
               autoCorrect={false}
               autoCapitalize="none"
               icon="lock"
               name="password"
-              // onChangeText={handleChange("password")}
-              // onBlur={() => setFieldTouched("password")}
               placeholder="Password"
               secureTextEntry
             />
 
-            {/* <AppErrorMessage
-              visible={touched.password}
-              error={errors.password}
-            /> */}
-            {/* {errors.password && (
-              <Text style={[defaultStyles.text, styles.text]}>
-                {errors.password}
-              </Text>
-            )} */}
-
-            <LoginButton
-              onPress={handleSubmit}
-              style={{ marginTop: 10 }}
-              text="login"
-              color="primary"
-            />
+            <SubmitButton text="login" color="primary" />
           </>
         )}
       </Formik>
