@@ -11,7 +11,7 @@ export default function LoginScreen() {
     <ImageBackground blurRadius={7} source={bg} style={styles.image}>
       <View style={styles.header}>
         <Image source={logo} style={styles.logo} />
-        <Text style={styles.text}>sell what you don't anymore</Text>
+        <Text style={styles.text}>sell what you don't need anymore</Text>
       </View>
       <View style={styles.btnContainer}>
         <LoginButton text="Login" color="primary" onPress={onPress} />
