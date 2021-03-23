@@ -9,7 +9,7 @@ function Screen({ children, style }) {
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: Constant.statusBarHeight,
+    paddingTop: Constant.statusBarHeight + 5,
     flex: 1,
   },
 });
