@@ -15,8 +15,9 @@ import defaultStyles from "../config/styles";
 import Screen from "./Screen";
 import PickerItem from "./PickerItem";
 
-function AppPicker({ icon, items, placeholder, setCategory }) {
+function AppPicker({ icon, items, placeholder }) {
   const [visible, setVisible] = useState(false);
+  const [category, setCategory] = useState("Category");
 
   return (
     <>
@@ -30,7 +31,9 @@ function AppPicker({ icon, items, placeholder, setCategory }) {
               color={colors.medium}
             />
           )}
-          <Text style={[defaultStyles.text, styles.text]}>{placeholder}</Text>
+          <Text style={[defaultStyles.text, styles.text]}>
+            {category ? category : placeholder}
+          </Text>
           <MaterialCommunityIcons
             name="chevron-down"
             size={27}
@@ -46,10 +49,12 @@ function AppPicker({ icon, items, placeholder, setCategory }) {
             keyExtractor={(item) => item.type}
             renderItem={({ item }) => (
               <PickerItem
+                key={item.value}
                 text={item.label}
                 onPress={() => {
                   setVisible(false);
                   setCategory(item.label);
+                  // console.log(item.label);
                 }}
               />
             )}
