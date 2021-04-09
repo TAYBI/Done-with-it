@@ -1,53 +1,50 @@
 import React from "react";
-import bg from "../assets/background.jpg";
-import logo from "../assets/logo-red.png";
-import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, View, Image, Text } from "react-native";
+import AppButton from "../components/AppButton";
 
-import LoginButton from "../components/LoginButton";
-
-export default function LoginScreen() {
-  let onPress = () => console.log("pressed");
+function WelcomeScreen(props) {
   return (
-    <ImageBackground blurRadius={7} source={bg} style={styles.image}>
-      <View style={styles.header}>
-        <Image source={logo} style={styles.logo} />
-        <Text style={styles.text}>sell what you don't need anymore</Text>
+    <ImageBackground
+      blurRadius={10}
+      style={styles.background}
+      source={require("../assets/background.jpg")}
+    >
+      <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={require("../assets/logo-red.png")} />
+        <Text style={styles.tagline}>Sell What You Don't Need</Text>
       </View>
-      <View style={styles.btnContainer}>
-        <LoginButton text="Login" color="primary" onPress={onPress} />
-        <LoginButton text="Register" color="secondary" onPress={onPress} />
+      <View style={styles.buttonsContainer}>
+        <AppButton title="Login" />
+        <AppButton title="Register" color="secondary" />
       </View>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  image: { flex: 1, justifyContent: "flex-end", alignItems: "center" },
-  header: {
-    position: "absolute",
-    top: 70,
+  background: {
+    flex: 1,
+    justifyContent: "flex-end",
     alignItems: "center",
+  },
+  buttonsContainer: {
+    padding: 20,
+    width: "100%",
   },
   logo: {
     width: 100,
     height: 100,
   },
-  button: {
-    width: "100%",
-    height: 70,
+  logoContainer: {
+    position: "absolute",
+    top: 70,
+    alignItems: "center",
   },
-  text: {
-    fontSize: 20,
-    fontWeight: "bold",
-    padding: 30,
-    paddingTop: 15,
-    textAlign: "center",
-    textTransform: "capitalize",
-  },
-  btnContainer: {
-    width: "90%",
-    height: 130,
-    justifyContent: "space-between",
-    bottom: 30,
+  tagline: {
+    fontSize: 25,
+    fontWeight: "600",
+    paddingVertical: 20,
   },
 });
+
+export default WelcomeScreen;

@@ -1,60 +1,59 @@
 import React, { useState } from "react";
 import {
+  View,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Modal,
   Button,
   FlatList,
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  View,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import colors from "../config/colors";
-import defaultStyles from "../config/styles";
+import AppText from "./AppText";
 import Screen from "./Screen";
+import defaultStyles from "../config/styles";
 import PickerItem from "./PickerItem";
 
-function AppPicker({ icon, items, placeholder }) {
-  const [visible, setVisible] = useState(false);
-  const [category, setCategory] = useState("Category");
+function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => setVisible(true)}>
+      <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
           {icon && (
             <MaterialCommunityIcons
-              style={styles.icon}
               name={icon}
-              size={25}
-              color={colors.medium}
+              size={20}
+              color={defaultStyles.colors.medium}
+              style={styles.icon}
             />
           )}
-          <Text style={[defaultStyles.text, styles.text]}>
-            {category ? category : placeholder}
-          </Text>
+          {selectedItem ? (
+            <AppText style={styles.text}>{selectedItem.label}</AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
+          )}
+
           <MaterialCommunityIcons
             name="chevron-down"
-            size={27}
-            color={colors.medium}
+            size={20}
+            color={defaultStyles.colors.medium}
           />
         </View>
       </TouchableWithoutFeedback>
-      <Modal visible={visible} animationType="slide">
+      <Modal visible={modalVisible} animationType="slide">
         <Screen>
-          <Button title="Close" onPress={() => setVisible(false)} />
+          <Button title="Close" onPress={() => setModalVisible(false)} />
           <FlatList
             data={items}
-            keyExtractor={(item) => item.type}
+            keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
               <PickerItem
-                key={item.value}
-                text={item.label}
+                label={item.label}
                 onPress={() => {
-                  setVisible(false);
-                  setCategory(item.label);
-                  // console.log(item.label);
+                  setModalVisible(false);
+                  onSelectItem(item);
                 }}
               />
             )}
@@ -67,14 +66,19 @@ function AppPicker({ icon, items, placeholder }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light,
-    height: 60,
-    borderRadius: 35,
+    backgroundColor: defaultStyles.colors.light,
+    borderRadius: 25,
     flexDirection: "row",
+    width: "100%",
     padding: 15,
+    marginVertical: 10,
   },
   icon: {
-    marginRight: 5,
+    marginRight: 10,
+  },
+  placeholder: {
+    color: defaultStyles.colors.medium,
+    flex: 1,
   },
   text: {
     flex: 1,

@@ -4,21 +4,19 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../config/colors";
 
-function ViewImageScreen() {
+function ViewImageScreen(props) {
   return (
     <View style={styles.container}>
-      <MaterialCommunityIcons
-        style={styles.closeIcon}
-        name="close"
-        size={30}
-        color={colors.white}
-      />
-      <MaterialCommunityIcons
-        style={styles.deleteIcon}
-        name="trash-can-outline"
-        size={30}
-        color={colors.white}
-      />
+      <View style={styles.closeIcon}>
+        <MaterialCommunityIcons name="close" color="white" size={35} />
+      </View>
+      <View style={styles.deleteIcon}>
+        <MaterialCommunityIcons
+          name="trash-can-outline"
+          color="white"
+          size={35}
+        />
+      </View>
       <Image
         resizeMode="contain"
         style={styles.image}
@@ -44,7 +42,6 @@ const styles = StyleSheet.create({
     right: 30,
   },
   image: {
-    marginTop: 20,
     width: "100%",
     height: "100%",
   },

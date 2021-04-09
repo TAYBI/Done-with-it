@@ -1,18 +1,12 @@
-import { useFormikContext } from "formik";
 import React from "react";
-import LoginButton from "../LoginButton";
+import { useFormikContext } from "formik";
 
-function SubmitButton({ text, color }) {
+import AppButton from "../AppButton";
+
+function SubmitButton({ title }) {
   const { handleSubmit } = useFormikContext();
 
-  return (
-    <LoginButton
-      onPress={handleSubmit}
-      style={{ marginTop: 10 }}
-      text={text}
-      color={color}
-    />
-  );
+  return <AppButton title={title} onPress={handleSubmit} />;
 }
 
 export default SubmitButton;

@@ -11,15 +11,15 @@ function Icon({
   return (
     <View
       style={{
-        backgroundColor,
         width: size,
         height: size,
         borderRadius: size / 2,
-        alignItems: "center",
+        backgroundColor,
         justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <MaterialCommunityIcons name={name} size={size / 2} color={iconColor} />
+      <MaterialCommunityIcons name={name} color={iconColor} size={size * 0.5} />
     </View>
   );
 }
